@@ -7,16 +7,15 @@ import isUp from 'is-up';
 const appEntryPoint = async (args) => {
     const argsList = minimist(args.slice(2));
     showTitle(APP_TITLE);
-    doAction(argsList);
-
-    // const isHostUp = await isUp('https://fourtytwowords.herokuapp.com');
-    // if (isHostUp) {
-    //     showMessage('Successfully connected to host: https://fourtytwowords.herokuapp.com\n' +
-    //         'Type help to see available commands');
-    //     doAction(argsList);
-    //     return;
-    // }
-    // showMessage('Could not connect to host: https://fourtytwowords.herokuapp.com');
+    try {
+        await isUp('https://fourtytwowords.herokuapp.com');
+        showMessage('Successfully connected to host: https://fourtytwowords.herokuapp.com\n' +
+            'Type help to see available commands');
+        await doAction(argsList);
+    } catch (e) {
+        showMessage('Could not connect to host: https://fourtytwowords.herokuapp.com');
+        showMessage(e.response.data)
+    }
 };
 
 

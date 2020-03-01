@@ -6,24 +6,35 @@ import antonyms from "./antonyms";
 import definition from "./definition";
 import random from "./random";
 import word from "./word";
+import play from "./play";
+import {showMessage} from "../defaults/appConsts";
 
 const actionReferenceMap = {
-    'help'        : help,
-    'version'     : version,
-    'ex'          : examples,
-    'syn'         : synonyms,
-    'ant'         : antonyms,
-    'defn'        : definition,
+    'help': help,
+    'version': version,
+    'ex': examples,
+    'syn': synonyms,
+    'ant': antonyms,
+    'defn': definition,
 };
 
-const doAction = (argsList) => {
-    const cmd  = argsList._[0];
+const doAction = async (argsList) => {
+    const cmd = argsList._[0];
     const wordValue = argsList._[1];
-    if(cmd in actionReferenceMap)
-        actionReferenceMap[cmd](wordValue);
-    else {
-        if(!cmd) random();
-        else word(cmd);
+    try {
+        if (cmd in actionReferenceMap) {
+
+            const result = await actionReferenceMap[cmd](wordValue);
+            showMessage(result)
+
+        } else {
+            if (!cmd) await random();
+            else if (cmd === 'play') await play.init();
+            else await word(cmd);
+        }
+    } catch
+        (e) {
+        showMessage(e.response.data.error);
     }
 
 };

@@ -13,13 +13,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "boxen": "^4.2.0",
     "cfonts": "^2.8.0",
+    "dotenv": "^8.2.0",
+    "english-anagrams": "^1.0.0",
     "esm": "^3.2.25",
     "gradient-string": "^1.2.0",
     "inquirer": "^7.0.4",
     "is-up": "^4.0.0",
     "minimist": "^1.2.0",
+    "prompts": "^2.3.1",
     "save": "^2.4.0"
   }
 }
