@@ -8,9 +8,11 @@ import random from "./random";
 import word from "./word";
 import play from "./play";
 import {showMessage} from "../defaults/appConsts";
+import configApi from "./config/Config";
 
 const actionReferenceMap = {
     'help': help,
+    'config': configApi,
     'version': version,
     'ex': examples,
     'syn': synonyms,
@@ -23,7 +25,6 @@ const doAction = async (argsList) => {
     const wordValue = argsList._[1];
     try {
         if (cmd in actionReferenceMap) {
-
             const result = await actionReferenceMap[cmd](wordValue);
             showMessage(result)
 

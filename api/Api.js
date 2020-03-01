@@ -2,12 +2,11 @@ import axios from 'axios';
 import {buildFormat, buildUrl} from "../defaults/appConsts";
 
 
-export const api = async (url) => {
+export const api = async (url) =>
         await axios({
             method: 'get',
             url: url
         });
-};
 
 export const definitionApi = async (word) => {
     const response = await api(buildUrl('word/' + word + '/definitions'));

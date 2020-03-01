@@ -5,6 +5,7 @@ const help = () => {
         "\n==================================================="+
         "\nhelp - to see options"+
         "\nversion - to see version"+
+        "\nconfig - to set api key"+
         "\n\nAPP COMMANDS"+
         "\n---------------------------------------------------"+
         "\nex <word> - show example usage of the word"+

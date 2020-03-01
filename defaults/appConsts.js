@@ -1,6 +1,18 @@
 import boxen from "boxen";
 import gradient from "gradient-string";
-import config from '../config/Config';
+import Conf from "conf";
+
+export const getConf = () => {
+    return new Conf({
+        projectName: "cli_dictionary",
+        projectVersion: "1.0.0"
+    });
+};
+
+const getApiKey = () => {
+    const config = getConf();
+    return config.get('api_key').response;
+};
 
 export const APP_TITLE = "Dictionary";
 
@@ -26,7 +38,7 @@ export const buildFormat = (example) => {
 export const buildWordFormat = (word, def, ex, ant, syn) => {
     return ("Word: "+
             word+
-        "\n=========================================================\n\n"+
+         "\n=========================================================\n\n"+
         "\nDefinitions for "+
         word+
         "\n---------------------------------------------------------\n"+
@@ -46,4 +58,4 @@ export const buildWordFormat = (word, def, ex, ant, syn) => {
     );
 };
 
-export const buildUrl = (action) => 'https://fourtytwowords.herokuapp.com/'+action+'?api_key='+config.apiKey;
+export const buildUrl = (action) => 'https://fourtytwowords.herokuapp.com/'+action+'?api_key='+getApiKey()   ;
