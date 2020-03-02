@@ -5,7 +5,6 @@ Run "node . config" or "dict config"  and set the api key. This is a one time co
 
 To use from anywhere run <strong>sudo npm link</strong> from root directory.
 
-
 ## commands available
 ```bash
 $ dict help
@@ -21,3 +20,5 @@ $ dict play
 ```
 
 If you want to run just from the root directory wihtout running npm link use "node . <commands>" instead of "dict <commands>". 
+  
+#### Note: You can also install the package globally by running 'sudo npm i -g dictionary3000' and use 'dict' command to access the cli app from anywhere
